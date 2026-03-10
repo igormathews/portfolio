@@ -1,29 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Local image assets
-const imgSoarMobileAppView = "/images/soar-mobile-app.png";
-const imgAbodeEmptyStates = "/images/abode-empty-states.png";
-const imgImage1 = "/images/project-showcase.png";
-const imgWebsiteBentoboxes = "/images/website-bentoboxes.png";
-const imgKlinity = "/images/klinity.png";
-const imgWorksona = "/images/worksona.png";
-const imgVector = "/images/logo.svg";
+// ========================================
+// PORTFOLIO CONFIGURATION
+// Update this section to change content
+// ========================================
+
+const PORTFOLIO_CONFIG = {
+  // Logo
+  logo: "/images/logo.svg",
+
+  // Project Images (in order of display)
+  projects: [
+    {
+      name: "Soar Mobile App",
+      image: "/images/soar-mobile-app.png",
+      alt: "Soar mobile app view"
+    },
+    {
+      name: "Abode Empty States",
+      image: "/images/abode-empty-states.png",
+      alt: "Abode empty states"
+    },
+    {
+      name: "Project Showcase",
+      image: "/images/project-showcase.png",
+      alt: "Project showcase"
+    },
+    {
+      name: "Website Bentoboxes",
+      image: "/images/website-bentoboxes.png",
+      alt: "Website bentoboxes"
+    },
+    {
+      name: "Klinity",
+      image: "/images/klinity.png",
+      alt: "Klinity project"
+    },
+    {
+      name: "Worksona",
+      image: "/images/worksona.png",
+      alt: "Worksona project"
+    }
+  ]
+};
 
 export default function Portfolio() {
+  // Mobile detection
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const styles = {
     container: {
       display: 'flex',
+      flexDirection: isMobile ? 'column' : 'row',
       position: 'relative',
       width: '100%',
-      height: '100vh',
+      minHeight: '100vh',
       background: 'linear-gradient(90deg, #17171a 0%, #17171a 100%)',
     },
     aside: {
-      position: 'absolute',
+      position: isMobile ? 'relative' : 'absolute',
       left: 0,
       top: 0,
-      width: '640px',
-      height: '100%',
+      width: isMobile ? '100%' : '640px',
+      minHeight: isMobile ? 'auto' : '100%',
       background: 'linear-gradient(90deg, #17171a 0%, #17171a 100%)',
       display: 'flex',
       flexDirection: 'column',
@@ -33,7 +81,7 @@ export default function Portfolio() {
       display: 'flex',
       flexDirection: 'column',
       flex: '1',
-      padding: '32px',
+      padding: isMobile ? '24px 16px' : '32px',
       width: '100%',
     },
     nav: {
@@ -45,15 +93,15 @@ export default function Portfolio() {
       width: '100%',
     },
     logo: {
-      width: '248.9px',
-      height: '16px',
+      width: isMobile ? '180px' : '248.9px',
+      height: 'auto',
     },
     navLinks: {
       display: 'flex',
-      gap: '24px',
+      gap: isMobile ? '16px' : '24px',
       fontFamily: "'DM Sans', sans-serif",
       fontWeight: '500',
-      fontSize: '16px',
+      fontSize: isMobile ? '14px' : '16px',
       color: '#f6fcff',
     },
     navLink: {
@@ -66,22 +114,22 @@ export default function Portfolio() {
       flexDirection: 'column',
       flex: '1',
       alignItems: 'center',
-      paddingBottom: '80px',
-      paddingTop: '240px',
+      paddingBottom: isMobile ? '40px' : '80px',
+      paddingTop: isMobile ? '60px' : '240px',
       width: '100%',
     },
     heroContent: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '48px',
+      gap: isMobile ? '32px' : '48px',
       alignItems: 'center',
       width: '100%',
     },
     heading: {
       fontFamily: "'DM Sans', sans-serif",
       fontWeight: '700',
-      fontSize: '32px',
-      lineHeight: '35px',
+      fontSize: isMobile ? '24px' : '32px',
+      lineHeight: isMobile ? '28px' : '35px',
       color: '#f6fcff',
       textAlign: 'center',
       margin: 0,
@@ -89,14 +137,15 @@ export default function Portfolio() {
     textContent: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '16px',
+      gap: isMobile ? '12px' : '16px',
       alignItems: 'center',
       fontFamily: "'DM Sans', sans-serif",
       fontWeight: '500',
-      fontSize: '16px',
+      fontSize: isMobile ? '14px' : '16px',
       color: '#f6fcff',
       textAlign: 'center',
       width: '100%',
+      padding: isMobile ? '0 8px' : '0',
     },
     bodyText: {
       lineHeight: '24px',
@@ -120,11 +169,13 @@ export default function Portfolio() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '16px 24px',
+      padding: isMobile ? '14px 32px' : '16px 24px',
       borderRadius: '80px',
       border: 'none',
       cursor: 'pointer',
-      height: '56px',
+      height: isMobile ? '52px' : '56px',
+      width: isMobile ? '100%' : 'auto',
+      maxWidth: isMobile ? '300px' : 'none',
     },
     ctaButtonText: {
       fontFamily: "'DM Sans', sans-serif",
@@ -137,15 +188,15 @@ export default function Portfolio() {
       display: 'flex',
       flexDirection: 'column',
       flex: '1',
-      marginLeft: '640px',
-      height: '100vh',
+      marginLeft: isMobile ? '0' : '640px',
+      minHeight: isMobile ? 'auto' : '100vh',
       overflow: 'auto',
     },
     mainBackground: {
       background: '#000000',
       display: 'flex',
       flexDirection: 'column',
-      padding: '64px 84px',
+      padding: isMobile ? '32px 16px' : '64px 84px',
       width: '100%',
     },
     projectsContainer: {
@@ -182,7 +233,7 @@ export default function Portfolio() {
           {/* Navigation */}
           <div style={styles.nav}>
             <img
-              src={imgVector}
+              src={PORTFOLIO_CONFIG.logo}
               alt="Logo"
               style={styles.logo}
             />
@@ -217,9 +268,11 @@ export default function Portfolio() {
 
               {/* CTA Button */}
               <div style={styles.ctaContainer}>
-                <button style={styles.ctaButton}>
-                  <span style={styles.ctaButtonText}>Chat with Igor</span>
-                </button>
+                <a href="https://t.me/emptyomind" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <button style={styles.ctaButton}>
+                    <span style={styles.ctaButtonText}>Chat with Igor</span>
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -230,59 +283,15 @@ export default function Portfolio() {
       <div style={styles.main}>
         <div style={styles.mainBackground}>
           <div style={styles.projectsContainer}>
-            {/* Project 1: Soar Mobile App */}
-            <div style={styles.projectCard}>
-              <img
-                src={imgSoarMobileAppView}
-                alt="Soar mobile app view"
-                style={styles.projectImage}
-              />
-            </div>
-
-            {/* Project 2: Abode Empty States */}
-            <div style={styles.projectCard}>
-              <img
-                src={imgAbodeEmptyStates}
-                alt="Abode empty states"
-                style={styles.projectImage}
-              />
-            </div>
-
-            {/* Project 3: Image 1 */}
-            <div style={styles.projectCard}>
-              <img
-                src={imgImage1}
-                alt="Project showcase"
-                style={styles.projectImage}
-              />
-            </div>
-
-            {/* Project 4: Website Bentoboxes */}
-            <div style={styles.projectCard}>
-              <img
-                src={imgWebsiteBentoboxes}
-                alt="Website bentoboxes"
-                style={styles.projectImage}
-              />
-            </div>
-
-            {/* Project 5: Klinity */}
-            <div style={styles.projectCard}>
-              <img
-                src={imgKlinity}
-                alt="Klinity project"
-                style={styles.projectImage}
-              />
-            </div>
-
-            {/* Project 6: Worksona */}
-            <div style={styles.projectCard}>
-              <img
-                src={imgWorksona}
-                alt="Worksona project"
-                style={styles.projectImage}
-              />
-            </div>
+            {PORTFOLIO_CONFIG.projects.map((project, index) => (
+              <div key={index} style={styles.projectCard}>
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  style={styles.projectImage}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
