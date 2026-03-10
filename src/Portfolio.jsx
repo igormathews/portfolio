@@ -63,6 +63,7 @@ export default function Portfolio() {
       flexDirection: isMobile ? 'column' : 'row',
       position: 'relative',
       width: '100%',
+      height: isMobile ? 'auto' : '100vh',
       minHeight: '100vh',
       background: 'linear-gradient(90deg, #17171a 0%, #17171a 100%)',
     },
@@ -71,11 +72,11 @@ export default function Portfolio() {
       left: 0,
       top: 0,
       width: isMobile ? '100%' : '640px',
-      minHeight: isMobile ? 'auto' : '100%',
+      height: isMobile ? 'auto' : '100%',
       background: 'linear-gradient(90deg, #17171a 0%, #17171a 100%)',
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'auto',
+      overflow: isMobile ? 'visible' : 'auto',
     },
     asideContainer: {
       display: 'flex',
@@ -94,7 +95,8 @@ export default function Portfolio() {
     },
     logo: {
       width: isMobile ? '180px' : '248.9px',
-      height: 'auto',
+      height: isMobile ? '11.6px' : '16px',
+      objectFit: 'contain',
     },
     navLinks: {
       display: 'flex',
@@ -189,8 +191,8 @@ export default function Portfolio() {
       flexDirection: 'column',
       flex: '1',
       marginLeft: isMobile ? '0' : '640px',
-      minHeight: isMobile ? 'auto' : '100vh',
-      overflow: 'auto',
+      height: isMobile ? 'auto' : '100vh',
+      overflow: isMobile ? 'visible' : 'auto',
     },
     mainBackground: {
       background: '#000000',
