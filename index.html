@@ -40,6 +40,13 @@ body[data-view="home"] #site{display:none}
 body:not([data-view="home"]) #home{display:none}
 #home,#site>header{animation:fade .5s ease both}
 
+/* github */
+.gh{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(40px,3.6vw,64px);font-weight:400;font-size:clamp(13px,.73vw,14px);line-height:1.4;color:var(--muted);transition:opacity .25s ease}
+.gh:hover{opacity:.6}
+.gh-grid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,6px);grid-auto-columns:6px;gap:2px;max-width:100%;overflow:hidden}
+.gh-grid i{border-radius:1px;background:var(--ink)}
+.gh-grid i[data-l="0"]{opacity:.06}.gh-grid i[data-l="1"]{opacity:.25}.gh-grid i[data-l="2"]{opacity:.45}.gh-grid i[data-l="3"]{opacity:.7}.gh-grid i[data-l="4"]{opacity:1}
+
 /* header */
 #site>header{display:grid;grid-template-columns:calc(27.29vw - var(--edge)) 1fr auto;align-items:start;padding:var(--edge) max(var(--edge),env(safe-area-inset-right,0px)) 0 max(var(--edge),env(safe-area-inset-left,0px))}
 #site>header .navrow{justify-content:flex-end}
@@ -103,6 +110,10 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
       <a class="lnk" data-nav="info" href="#info">Info</a>
       <a class="lnk" data-nav="archive" href="#archive">Archive</a>
     </nav>
+    <a id="gh" class="gh" href="https://github.com/okaygiant" target="_blank" rel="noopener" hidden>
+      <span class="gh-grid" aria-hidden="true"></span>
+      <span class="gh-cap"></span>
+    </a>
   </div>
 </main>
 
@@ -287,6 +298,19 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
   document.getElementById('top').addEventListener('click',function(){
     window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   });
+  (function gh(){
+    var el=document.getElementById('gh'); if(!el||!window.fetch) return;
+    fetch('https://github-contributions-api.jogruber.de/v4/okaygiant?y=last').then(function(r){return r.ok?r.json():null}).then(function(j){
+      if(!j||!j.contributions) return;
+      var days=j.contributions, pad=new Date(days[0].date+'T00:00:00').getDay(), g=el.querySelector('.gh-grid'), frag=document.createDocumentFragment();
+      for(var p=0;p<pad;p++){var e=document.createElement('i');e.style.visibility='hidden';frag.appendChild(e);}
+      days.forEach(function(d){var i=document.createElement('i');i.dataset.l=d.level;i.title=d.count+' on '+d.date;frag.appendChild(i);});
+      g.appendChild(frag);
+      var t=j.total&&j.total.lastYear||0;
+      el.querySelector('.gh-cap').textContent=t+' contributions on GitHub in the last year';
+      el.hidden=false;
+    }).catch(function(){});
+  })();
   window.addEventListener('hashchange',route);
   route();
 })();
