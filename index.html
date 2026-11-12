@@ -53,6 +53,8 @@ body:not([data-view="home"]) #home{display:none}
 .cap span{display:block}
 .body{font-weight:400;font-size:var(--t20);line-height:1.5;color:var(--muted);max-width:max(46.875vw,320px);text-wrap:pretty}
 .band{background:var(--band)}
+.embed{padding:clamp(12px,1.5625vw,30px)}
+.embed iframe{display:block;width:100%;height:calc(100vh - 120px);min-height:520px;border:0;background:#2c2c2c}
 .band img{display:block;width:100%;height:auto}
 .hyp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3.125vw,60px);width:min(89.58vw,1720px);margin-inline:auto;font-size:var(--t20);line-height:1.5}
 .hyp .h{display:flex;flex-direction:column;gap:12px}
@@ -107,7 +109,7 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 <div id="site">
   <header>
     <a class="lnk name" href="#">Ihar Matsiushonak</a>
-    <ul class="projects" aria-label="Projects"><li><a class="lnk" href="#rarible" data-p="rarible">Rarible</a></li><li><a class="lnk" href="#atleta" data-p="atleta">Atleta network</a></li><li><a class="lnk" href="#molecula" data-p="molecula">Molecula protocol</a></li><li><a class="lnk" href="#omniscalpr" data-p="omniscalpr">Omniscalpr</a></li><li><a class="lnk" href="#limitless" data-p="limitless">OTC Limitless</a></li><li><span class="off" aria-disabled="true">Telegram apps</span></li></ul>
+    <ul class="projects" aria-label="Projects"><li><a class="lnk" href="#rarible" data-p="rarible">Rarible</a></li><li><a class="lnk" href="#atleta" data-p="atleta">Atleta network</a></li><li><a class="lnk" href="#molecula" data-p="molecula">Molecula protocol</a></li><li><a class="lnk" href="#omniscalpr" data-p="omniscalpr">Omniscalpr</a></li><li><a class="lnk" href="#limitless" data-p="limitless">OTC Limitless</a></li><li><a class="lnk" href="#telegram" data-p="telegram">Telegram apps</a></li></ul>
     <nav class="navrow" aria-label="Main">
       <a class="lnk" data-nav="work" href="#work">Work</a>
       <a class="lnk" data-nav="info" href="#info">Info</a>
@@ -132,6 +134,7 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
   </div>
 </div>
 
+<template id="t-telegram"><div class="intro"><h2 class="cap"><span>Telegram apps</span></h2></div><figure class="band embed"><iframe src="https://embed.figma.com/design/VjEyOAjzmf6bGs62AAVB33/export?node-id=0-1&amp;embed-host=share" title="Telegram apps — Figma canvas" allowfullscreen loading="lazy"></iframe></figure></template>
 <template id="t-rarible"><div class="intro"><h2 class="cap"><span>Rarible</span><span>From NFT marketplace to a mobile-first trading terminal</span></h2></div>
 <div class="intro"><h2 class="cap"><span>Mobile: the whole trading loop on a phone</span></h2><p class="body">Explore trending collections, filter by traits, buy, sell and bid without leaving the collection. A sticky action bar keeps Offer / Sell / Buy one tap away, and toasts confirm wallet steps without blocking the grid.</p></div>
 <figure class="band"><img src="img/r01.webp" width="1536" height="632" alt="Mobile screens: explore and collection" loading="lazy" decoding="async"></figure>
@@ -240,8 +243,8 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 
 <script>
 (function(){
-  var SLUGS=['rarible','atleta','molecula','omniscalpr','limitless'];
-  var NAMES={rarible:'Rarible',atleta:'Atleta network',molecula:'Molecula protocol',omniscalpr:'Omniscalpr',limitless:'OTC Limitless'};
+  var SLUGS=['rarible','atleta','molecula','omniscalpr','limitless','telegram'];
+  var NAMES={rarible:'Rarible',atleta:'Atleta network',molecula:'Molecula protocol',omniscalpr:'Omniscalpr',limitless:'OTC Limitless',telegram:'Telegram apps'};
   var wrap=document.getElementById('wrap'), stage=document.getElementById('case');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var current=null, timer=0;
