@@ -125,7 +125,7 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 <div id="site">
   <header>
     <a class="lnk name" href="#">Ihar Matsiushonak</a>
-    <ul class="projects" aria-label="Projects"><li><a class="lnk" href="#rarible" data-p="rarible">Rarible</a></li><li><a class="lnk" href="#atleta" data-p="atleta">Atleta network</a></li><li><a class="lnk" href="#molecula" data-p="molecula">Molecula protocol</a></li><li><a class="lnk" href="#omniscalpr" data-p="omniscalpr">Omniscalpr</a></li><li><a class="lnk" href="#limitless" data-p="limitless">OTC Limitless</a></li><li><a class="lnk" href="#telegram" data-p="telegram">Telegram apps</a></li></ul>
+    <ul class="projects" aria-label="Projects"><li><a class="lnk" href="#rarible" data-p="rarible">Rarible</a></li><li><a class="lnk" href="#atleta" data-p="atleta">Atleta network</a></li><li><a class="lnk" href="#molecula" data-p="molecula">Molecula protocol</a></li><li><a class="lnk" href="#omniscalpr" data-p="omniscalpr">Omniscalpr</a></li><li><a class="lnk" href="#limitless" data-p="limitless">OTC Limitless</a></li><li><a class="lnk" href="#telegram" data-p="telegram">Telegram apps</a></li><li><a class="lnk" href="#igaming" data-p="igaming">iGaming</a></li></ul>
     <nav class="navrow" aria-label="Main">
       <a class="lnk" data-nav="work" href="#work">Work</a>
       <a class="lnk" data-nav="info" href="#info">Info</a>
@@ -155,6 +155,7 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 </div>
 
 <template id="t-telegram"><div class="intro"><h2 class="cap"><span>Telegram apps</span></h2></div><figure class="band embed"><iframe src="https://embed.figma.com/design/VjEyOAjzmf6bGs62AAVB33/export?node-id=0-1&amp;embed-host=share" title="Telegram apps — Figma canvas" allowfullscreen loading="lazy"></iframe></figure></template>
+<template id="t-igaming"><div class="intro"><h2 class="cap"><span>iGaming</span></h2></div><figure class="band embed"><iframe src="https://embed.figma.com/design/VjEyOAjzmf6bGs62AAVB33/export?node-id=119-13172&amp;embed-host=share" title="iGaming — Figma canvas" allowfullscreen loading="lazy"></iframe></figure></template>
 <template id="t-rarible"><div class="intro"><h2 class="cap"><span>Rarible</span><span>From NFT marketplace to a mobile-first trading terminal</span></h2></div>
 <div class="intro"><h2 class="cap"><span>Mobile: the whole trading loop on a phone</span></h2><p class="body">Explore trending collections, filter by traits, buy, sell and bid without leaving the collection. A sticky action bar keeps Offer / Sell / Buy one tap away, and toasts confirm wallet steps without blocking the grid.</p></div>
 <figure class="band"><img src="img/r01.webp" width="1920" height="790" alt="Mobile screens: explore and collection" loading="lazy" decoding="async"></figure>
@@ -263,8 +264,8 @@ footer .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 
 <script>
 (function(){
-  var SLUGS=['rarible','atleta','molecula','omniscalpr','limitless','telegram'];
-  var NAMES={rarible:'Rarible',atleta:'Atleta network',molecula:'Molecula protocol',omniscalpr:'Omniscalpr',limitless:'OTC Limitless',telegram:'Telegram apps'};
+  var SLUGS=['rarible','atleta','molecula','omniscalpr','limitless','telegram','igaming'];
+  var NAMES={rarible:'Rarible',atleta:'Atleta network',molecula:'Molecula protocol',omniscalpr:'Omniscalpr',limitless:'OTC Limitless',telegram:'Telegram apps',igaming:'iGaming'};
   var wrap=document.getElementById('wrap'), stage=document.getElementById('case');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var current=null, timer=0;
